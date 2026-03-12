@@ -1,0 +1,2608 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.compute_mumbai.aws_eks_addon.coredns[0] will be created
+  + resource "aws_eks_addon" "coredns" {
+      + addon_name           = "coredns"
+      + addon_version        = "v1.10.1-eksbuild.1"
+      + arn                  = (known after apply)
+      + cluster_name         = "dev-eks-mumbai"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + tags_all             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+    }
+
+  # module.compute_mumbai.aws_eks_addon.kube_proxy[0] will be created
+  + resource "aws_eks_addon" "kube_proxy" {
+      + addon_name           = "kube-proxy"
+      + addon_version        = "v1.28.1-eksbuild.1"
+      + arn                  = (known after apply)
+      + cluster_name         = "dev-eks-mumbai"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + tags_all             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+    }
+
+  # module.compute_mumbai.aws_eks_addon.vpc_cni[0] will be created
+  + resource "aws_eks_addon" "vpc_cni" {
+      + addon_name           = "vpc-cni"
+      + addon_version        = "v1.14.1-eksbuild.1"
+      + arn                  = (known after apply)
+      + cluster_name         = "dev-eks-mumbai"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + tags_all             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+    }
+
+  # module.compute_mumbai.aws_eks_cluster.this[0] will be created
+  + resource "aws_eks_cluster" "this" {
+      + arn                           = (known after apply)
+      + bootstrap_self_managed_addons = true
+      + certificate_authority         = (known after apply)
+      + cluster_id                    = (known after apply)
+      + created_at                    = (known after apply)
+      + endpoint                      = (known after apply)
+      + id                            = (known after apply)
+      + identity                      = (known after apply)
+      + name                          = "dev-eks-mumbai"
+      + platform_version              = (known after apply)
+      + role_arn                      = (known after apply)
+      + status                        = (known after apply)
+      + tags                          = {
+          + "Environment" = "dev"
+          + "Name"        = "dev-eks-mumbai"
+        }
+      + tags_all                      = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-eks-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+      + version                       = "1.28"
+
+      + access_config (known after apply)
+
+      + kubernetes_network_config (known after apply)
+
+      + upgrade_policy (known after apply)
+
+      + vpc_config {
+          + cluster_security_group_id = (known after apply)
+          + endpoint_private_access   = false
+          + endpoint_public_access    = true
+          + public_access_cidrs       = [
+              + "0.0.0.0/0",
+            ]
+          + subnet_ids                = (known after apply)
+          + vpc_id                    = (known after apply)
+        }
+    }
+
+  # module.compute_mumbai.aws_eks_node_group.this[0] will be created
+  + resource "aws_eks_node_group" "this" {
+      + ami_type               = (known after apply)
+      + arn                    = (known after apply)
+      + capacity_type          = (known after apply)
+      + cluster_name           = "dev-eks-mumbai"
+      + disk_size              = (known after apply)
+      + id                     = (known after apply)
+      + instance_types         = [
+          + "t3.small",
+        ]
+      + node_group_name        = "dev-eks-ng-mumbai"
+      + node_group_name_prefix = (known after apply)
+      + node_role_arn          = (known after apply)
+      + release_version        = (known after apply)
+      + resources              = (known after apply)
+      + status                 = (known after apply)
+      + subnet_ids             = (known after apply)
+      + tags                   = {
+          + "Environment" = "dev"
+          + "Name"        = "dev-eks-ng-mumbai"
+        }
+      + tags_all               = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-eks-ng-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+      + version                = (known after apply)
+
+      + node_repair_config (known after apply)
+
+      + scaling_config {
+          + desired_size = 1
+          + max_size     = 2
+          + min_size     = 1
+        }
+
+      + update_config {
+          + max_unavailable = 1
+        }
+    }
+
+  # module.compute_mumbai.aws_iam_role.eks_cluster will be created
+  + resource "aws_iam_role" "eks_cluster" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "eks.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "dev-eks-cluster-role-mumbai"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Name" = "dev-eks-role-mumbai"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-eks-role-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.compute_mumbai.aws_iam_role.eks_nodes[0] will be created
+  + resource "aws_iam_role" "eks_nodes" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "dev-eks-node-role-mumbai"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Name" = "dev-eks-node-role-mumbai"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-eks-node-role-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.compute_mumbai.aws_iam_role_policy_attachment.ecr_read_only[0] will be created
+  + resource "aws_iam_role_policy_attachment" "ecr_read_only" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      + role       = "dev-eks-node-role-mumbai"
+    }
+
+  # module.compute_mumbai.aws_iam_role_policy_attachment.eks_cluster_policy will be created
+  + resource "aws_iam_role_policy_attachment" "eks_cluster_policy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+      + role       = "dev-eks-cluster-role-mumbai"
+    }
+
+  # module.compute_mumbai.aws_iam_role_policy_attachment.eks_cni_policy[0] will be created
+  + resource "aws_iam_role_policy_attachment" "eks_cni_policy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+      + role       = "dev-eks-node-role-mumbai"
+    }
+
+  # module.compute_mumbai.aws_iam_role_policy_attachment.eks_worker_node_policy[0] will be created
+  + resource "aws_iam_role_policy_attachment" "eks_worker_node_policy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+      + role       = "dev-eks-node-role-mumbai"
+    }
+
+  # module.compute_mumbai.aws_instance.this[0] will be created
+  + resource "aws_instance" "this" {
+      + ami                                  = "ami-0d16415f0e2dc4b80"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + cpu_core_count                       = (known after apply)
+      + cpu_threads_per_core                 = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t3.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = "mumbai-key-pair"
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Component"   = "compute"
+          + "Environment" = "dev"
+          + "Name"        = "dev-ec2-mumbai-1"
+          + "Region"      = "mumbai"
+        }
+      + tags_all                             = {
+          + "Component"   = "compute"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-ec2-mumbai-1"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "mumbai"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = "8bb449186f9e31734d41c6ad031034c98c0b5561"
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options (known after apply)
+
+      + network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device (known after apply)
+    }
+
+  # module.compute_mumbai.aws_security_group.ec2 will be created
+  + resource "aws_security_group" "ec2" {
+      + arn                    = (known after apply)
+      + description            = "Security group for EC2 instances in mumbai"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Allow port 22"
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+            },
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Allow port 80"
+              + from_port        = 80
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 80
+            },
+        ]
+      + name                   = "dev-ec2-sg-mumbai"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "dev-ec2-sg-mumbai"
+        }
+      + tags_all               = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-ec2-sg-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # module.compute_singapore.aws_eks_addon.coredns[0] will be created
+  + resource "aws_eks_addon" "coredns" {
+      + addon_name           = "coredns"
+      + addon_version        = "v1.10.1-eksbuild.1"
+      + arn                  = (known after apply)
+      + cluster_name         = "dev-eks-singapore"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + tags_all             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+    }
+
+  # module.compute_singapore.aws_eks_addon.kube_proxy[0] will be created
+  + resource "aws_eks_addon" "kube_proxy" {
+      + addon_name           = "kube-proxy"
+      + addon_version        = "v1.28.1-eksbuild.1"
+      + arn                  = (known after apply)
+      + cluster_name         = "dev-eks-singapore"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + tags_all             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+    }
+
+  # module.compute_singapore.aws_eks_addon.vpc_cni[0] will be created
+  + resource "aws_eks_addon" "vpc_cni" {
+      + addon_name           = "vpc-cni"
+      + addon_version        = "v1.14.1-eksbuild.1"
+      + arn                  = (known after apply)
+      + cluster_name         = "dev-eks-singapore"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + tags_all             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+    }
+
+  # module.compute_singapore.aws_eks_cluster.this[0] will be created
+  + resource "aws_eks_cluster" "this" {
+      + arn                           = (known after apply)
+      + bootstrap_self_managed_addons = true
+      + certificate_authority         = (known after apply)
+      + cluster_id                    = (known after apply)
+      + created_at                    = (known after apply)
+      + endpoint                      = (known after apply)
+      + id                            = (known after apply)
+      + identity                      = (known after apply)
+      + name                          = "dev-eks-singapore"
+      + platform_version              = (known after apply)
+      + role_arn                      = (known after apply)
+      + status                        = (known after apply)
+      + tags                          = {
+          + "Environment" = "dev"
+          + "Name"        = "dev-eks-singapore"
+        }
+      + tags_all                      = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-eks-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+      + version                       = "1.28"
+
+      + access_config (known after apply)
+
+      + kubernetes_network_config (known after apply)
+
+      + upgrade_policy (known after apply)
+
+      + vpc_config {
+          + cluster_security_group_id = (known after apply)
+          + endpoint_private_access   = false
+          + endpoint_public_access    = true
+          + public_access_cidrs       = [
+              + "0.0.0.0/0",
+            ]
+          + subnet_ids                = (known after apply)
+          + vpc_id                    = (known after apply)
+        }
+    }
+
+  # module.compute_singapore.aws_eks_node_group.this[0] will be created
+  + resource "aws_eks_node_group" "this" {
+      + ami_type               = (known after apply)
+      + arn                    = (known after apply)
+      + capacity_type          = (known after apply)
+      + cluster_name           = "dev-eks-singapore"
+      + disk_size              = (known after apply)
+      + id                     = (known after apply)
+      + instance_types         = [
+          + "t3.small",
+        ]
+      + node_group_name        = "dev-eks-ng-singapore"
+      + node_group_name_prefix = (known after apply)
+      + node_role_arn          = (known after apply)
+      + release_version        = (known after apply)
+      + resources              = (known after apply)
+      + status                 = (known after apply)
+      + subnet_ids             = (known after apply)
+      + tags                   = {
+          + "Environment" = "dev"
+          + "Name"        = "dev-eks-ng-singapore"
+        }
+      + tags_all               = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-eks-ng-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+      + version                = (known after apply)
+
+      + node_repair_config (known after apply)
+
+      + scaling_config {
+          + desired_size = 1
+          + max_size     = 2
+          + min_size     = 1
+        }
+
+      + update_config {
+          + max_unavailable = 1
+        }
+    }
+
+  # module.compute_singapore.aws_iam_role.eks_cluster will be created
+  + resource "aws_iam_role" "eks_cluster" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "eks.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "dev-eks-cluster-role-singapore"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Name" = "dev-eks-role-singapore"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-eks-role-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.compute_singapore.aws_iam_role.eks_nodes[0] will be created
+  + resource "aws_iam_role" "eks_nodes" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "dev-eks-node-role-singapore"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Name" = "dev-eks-node-role-singapore"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-eks-node-role-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.compute_singapore.aws_iam_role_policy_attachment.ecr_read_only[0] will be created
+  + resource "aws_iam_role_policy_attachment" "ecr_read_only" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      + role       = "dev-eks-node-role-singapore"
+    }
+
+  # module.compute_singapore.aws_iam_role_policy_attachment.eks_cluster_policy will be created
+  + resource "aws_iam_role_policy_attachment" "eks_cluster_policy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+      + role       = "dev-eks-cluster-role-singapore"
+    }
+
+  # module.compute_singapore.aws_iam_role_policy_attachment.eks_cni_policy[0] will be created
+  + resource "aws_iam_role_policy_attachment" "eks_cni_policy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+      + role       = "dev-eks-node-role-singapore"
+    }
+
+  # module.compute_singapore.aws_iam_role_policy_attachment.eks_worker_node_policy[0] will be created
+  + resource "aws_iam_role_policy_attachment" "eks_worker_node_policy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+      + role       = "dev-eks-node-role-singapore"
+    }
+
+  # module.compute_singapore.aws_instance.this[0] will be created
+  + resource "aws_instance" "this" {
+      + ami                                  = "ami-0cff352e18715650f"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + cpu_core_count                       = (known after apply)
+      + cpu_threads_per_core                 = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t3.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = "mumbai-key-pair"
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Component"   = "compute"
+          + "Environment" = "dev"
+          + "Name"        = "dev-ec2-singapore-1"
+          + "Region"      = "singapore"
+        }
+      + tags_all                             = {
+          + "Component"   = "compute"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-ec2-singapore-1"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "singapore"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = "7e593f6383b82a828cfd476eac581656c24d39cf"
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options (known after apply)
+
+      + network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device (known after apply)
+    }
+
+  # module.compute_singapore.aws_security_group.ec2 will be created
+  + resource "aws_security_group" "ec2" {
+      + arn                    = (known after apply)
+      + description            = "Security group for EC2 instances in singapore"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Allow port 22"
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+            },
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Allow port 80"
+              + from_port        = 80
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 80
+            },
+        ]
+      + name                   = "dev-ec2-sg-singapore"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "dev-ec2-sg-singapore"
+        }
+      + tags_all               = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-ec2-sg-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # module.compute_tokyo.aws_eks_addon.coredns[0] will be created
+  + resource "aws_eks_addon" "coredns" {
+      + addon_name           = "coredns"
+      + addon_version        = "v1.10.1-eksbuild.1"
+      + arn                  = (known after apply)
+      + cluster_name         = "dev-eks-tokyo"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + tags_all             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+    }
+
+  # module.compute_tokyo.aws_eks_addon.kube_proxy[0] will be created
+  + resource "aws_eks_addon" "kube_proxy" {
+      + addon_name           = "kube-proxy"
+      + addon_version        = "v1.28.1-eksbuild.1"
+      + arn                  = (known after apply)
+      + cluster_name         = "dev-eks-tokyo"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + tags_all             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+    }
+
+  # module.compute_tokyo.aws_eks_addon.vpc_cni[0] will be created
+  + resource "aws_eks_addon" "vpc_cni" {
+      + addon_name           = "vpc-cni"
+      + addon_version        = "v1.14.1-eksbuild.1"
+      + arn                  = (known after apply)
+      + cluster_name         = "dev-eks-tokyo"
+      + configuration_values = (known after apply)
+      + created_at           = (known after apply)
+      + id                   = (known after apply)
+      + modified_at          = (known after apply)
+      + tags_all             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+    }
+
+  # module.compute_tokyo.aws_eks_cluster.this[0] will be created
+  + resource "aws_eks_cluster" "this" {
+      + arn                           = (known after apply)
+      + bootstrap_self_managed_addons = true
+      + certificate_authority         = (known after apply)
+      + cluster_id                    = (known after apply)
+      + created_at                    = (known after apply)
+      + endpoint                      = (known after apply)
+      + id                            = (known after apply)
+      + identity                      = (known after apply)
+      + name                          = "dev-eks-tokyo"
+      + platform_version              = (known after apply)
+      + role_arn                      = (known after apply)
+      + status                        = (known after apply)
+      + tags                          = {
+          + "Environment" = "dev"
+          + "Name"        = "dev-eks-tokyo"
+        }
+      + tags_all                      = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-eks-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+      + version                       = "1.28"
+
+      + access_config (known after apply)
+
+      + kubernetes_network_config (known after apply)
+
+      + upgrade_policy (known after apply)
+
+      + vpc_config {
+          + cluster_security_group_id = (known after apply)
+          + endpoint_private_access   = false
+          + endpoint_public_access    = true
+          + public_access_cidrs       = [
+              + "0.0.0.0/0",
+            ]
+          + subnet_ids                = (known after apply)
+          + vpc_id                    = (known after apply)
+        }
+    }
+
+  # module.compute_tokyo.aws_eks_node_group.this[0] will be created
+  + resource "aws_eks_node_group" "this" {
+      + ami_type               = (known after apply)
+      + arn                    = (known after apply)
+      + capacity_type          = (known after apply)
+      + cluster_name           = "dev-eks-tokyo"
+      + disk_size              = (known after apply)
+      + id                     = (known after apply)
+      + instance_types         = [
+          + "t3.small",
+        ]
+      + node_group_name        = "dev-eks-ng-tokyo"
+      + node_group_name_prefix = (known after apply)
+      + node_role_arn          = (known after apply)
+      + release_version        = (known after apply)
+      + resources              = (known after apply)
+      + status                 = (known after apply)
+      + subnet_ids             = (known after apply)
+      + tags                   = {
+          + "Environment" = "dev"
+          + "Name"        = "dev-eks-ng-tokyo"
+        }
+      + tags_all               = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-eks-ng-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+      + version                = (known after apply)
+
+      + node_repair_config (known after apply)
+
+      + scaling_config {
+          + desired_size = 1
+          + max_size     = 2
+          + min_size     = 1
+        }
+
+      + update_config {
+          + max_unavailable = 1
+        }
+    }
+
+  # module.compute_tokyo.aws_iam_role.eks_cluster will be created
+  + resource "aws_iam_role" "eks_cluster" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "eks.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "dev-eks-cluster-role-tokyo"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Name" = "dev-eks-role-tokyo"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-eks-role-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.compute_tokyo.aws_iam_role.eks_nodes[0] will be created
+  + resource "aws_iam_role" "eks_nodes" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "dev-eks-node-role-tokyo"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Name" = "dev-eks-node-role-tokyo"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-eks-node-role-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.compute_tokyo.aws_iam_role_policy_attachment.ecr_read_only[0] will be created
+  + resource "aws_iam_role_policy_attachment" "ecr_read_only" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      + role       = "dev-eks-node-role-tokyo"
+    }
+
+  # module.compute_tokyo.aws_iam_role_policy_attachment.eks_cluster_policy will be created
+  + resource "aws_iam_role_policy_attachment" "eks_cluster_policy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+      + role       = "dev-eks-cluster-role-tokyo"
+    }
+
+  # module.compute_tokyo.aws_iam_role_policy_attachment.eks_cni_policy[0] will be created
+  + resource "aws_iam_role_policy_attachment" "eks_cni_policy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+      + role       = "dev-eks-node-role-tokyo"
+    }
+
+  # module.compute_tokyo.aws_iam_role_policy_attachment.eks_worker_node_policy[0] will be created
+  + resource "aws_iam_role_policy_attachment" "eks_worker_node_policy" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+      + role       = "dev-eks-node-role-tokyo"
+    }
+
+  # module.compute_tokyo.aws_instance.this[0] will be created
+  + resource "aws_instance" "this" {
+      + ami                                  = "ami-088e8e35653f78e86"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + cpu_core_count                       = (known after apply)
+      + cpu_threads_per_core                 = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = (known after apply)
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t3.micro"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = "mumbai-key-pair"
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Component"   = "compute"
+          + "Environment" = "dev"
+          + "Name"        = "dev-ec2-tokyo-1"
+          + "Region"      = "tokyo"
+        }
+      + tags_all                             = {
+          + "Component"   = "compute"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-ec2-tokyo-1"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "tokyo"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = "9e401abb23bab8968e58ce3ae854f65151034b04"
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options (known after apply)
+
+      + network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device (known after apply)
+    }
+
+  # module.compute_tokyo.aws_security_group.ec2 will be created
+  + resource "aws_security_group" "ec2" {
+      + arn                    = (known after apply)
+      + description            = "Security group for EC2 instances in tokyo"
+      + egress                 = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + from_port        = 0
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "-1"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 0
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Allow port 22"
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+            },
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "Allow port 80"
+              + from_port        = 80
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 80
+            },
+        ]
+      + name                   = "dev-ec2-sg-tokyo"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "dev-ec2-sg-tokyo"
+        }
+      + tags_all               = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-ec2-sg-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # module.database.aws_dynamodb_table.global will be created
+  + resource "aws_dynamodb_table" "global" {
+      + arn              = (known after apply)
+      + billing_mode     = "PAY_PER_REQUEST"
+      + hash_key         = "PK"
+      + id               = (known after apply)
+      + name             = "dev-global-app-data"
+      + range_key        = "SK"
+      + read_capacity    = (known after apply)
+      + stream_arn       = (known after apply)
+      + stream_enabled   = true
+      + stream_label     = (known after apply)
+      + stream_view_type = "NEW_AND_OLD_IMAGES"
+      + tags             = {
+          + "Component"     = "database"
+          + "Environment"   = "dev"
+          + "Name"          = "dev-global-app-data"
+          + "PrimaryRegion" = "Mumbai"
+        }
+      + tags_all         = {
+          + "Component"     = "database"
+          + "Environment"   = "dev"
+          + "ManagedBy"     = "Terraform"
+          + "Name"          = "dev-global-app-data"
+          + "PrimaryRegion" = "Mumbai"
+          + "Project"       = "MultiRegionInfra"
+          + "Region"        = "Mumbai"
+        }
+      + write_capacity   = (known after apply)
+
+      + attribute {
+          + name = "GSI1PK"
+          + type = "S"
+        }
+      + attribute {
+          + name = "GSI1SK"
+          + type = "S"
+        }
+      + attribute {
+          + name = "PK"
+          + type = "S"
+        }
+      + attribute {
+          + name = "SK"
+          + type = "S"
+        }
+
+      + global_secondary_index {
+          + hash_key           = "GSI1PK"
+          + name               = "GSI1"
+          + non_key_attributes = []
+          + projection_type    = "ALL"
+          + range_key          = "GSI1SK"
+          + read_capacity      = (known after apply)
+          + write_capacity     = (known after apply)
+        }
+
+      + point_in_time_recovery {
+          + enabled                 = false
+          + recovery_period_in_days = (known after apply)
+        }
+
+      + server_side_encryption {
+          + enabled     = true
+          + kms_key_arn = (known after apply)
+        }
+
+      + ttl {
+          + enabled = false
+        }
+    }
+
+  # module.database.aws_dynamodb_table_item.test_item will be created
+  + resource "aws_dynamodb_table_item" "test_item" {
+      + hash_key   = "PK"
+      + id         = (known after apply)
+      + item       = (known after apply)
+      + range_key  = "SK"
+      + table_name = "dev-global-app-data"
+    }
+
+  # module.database.aws_dynamodb_table_replica.singapore will be created
+  + resource "aws_dynamodb_table_replica" "singapore" {
+      + arn                         = (known after apply)
+      + deletion_protection_enabled = (known after apply)
+      + global_table_arn            = (known after apply)
+      + id                          = (known after apply)
+      + kms_key_arn                 = (known after apply)
+      + point_in_time_recovery      = false
+      + tags                        = {
+          + "Environment" = "dev"
+          + "Name"        = "dev-global-app-data-singapore-replica"
+          + "Region"      = "Singapore"
+        }
+      + tags_all                    = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-global-app-data-singapore-replica"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+    }
+
+  # module.networking_mumbai.aws_eip.nat[0] will be created
+  + resource "aws_eip" "nat" {
+      + allocation_id        = (known after apply)
+      + arn                  = (known after apply)
+      + association_id       = (known after apply)
+      + carrier_ip           = (known after apply)
+      + customer_owned_ip    = (known after apply)
+      + domain               = "vpc"
+      + id                   = (known after apply)
+      + instance             = (known after apply)
+      + ipam_pool_id         = (known after apply)
+      + network_border_group = (known after apply)
+      + network_interface    = (known after apply)
+      + private_dns          = (known after apply)
+      + private_ip           = (known after apply)
+      + ptr_record           = (known after apply)
+      + public_dns           = (known after apply)
+      + public_ip            = (known after apply)
+      + public_ipv4_pool     = (known after apply)
+      + tags                 = {
+          + "Name" = "dev-nat-eip-1-mumbai"
+        }
+      + tags_all             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-nat-eip-1-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+      + vpc                  = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_internet_gateway.this will be created
+  + resource "aws_internet_gateway" "this" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + tags     = {
+          + "Name" = "dev-igw-mumbai"
+        }
+      + tags_all = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-igw-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_nat_gateway.this[0] will be created
+  + resource "aws_nat_gateway" "this" {
+      + allocation_id                      = (known after apply)
+      + association_id                     = (known after apply)
+      + connectivity_type                  = "public"
+      + id                                 = (known after apply)
+      + network_interface_id               = (known after apply)
+      + private_ip                         = (known after apply)
+      + public_ip                          = (known after apply)
+      + secondary_private_ip_address_count = (known after apply)
+      + secondary_private_ip_addresses     = (known after apply)
+      + subnet_id                          = (known after apply)
+      + tags                               = {
+          + "Name" = "dev-nat-gw-1-mumbai"
+        }
+      + tags_all                           = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-nat-gw-1-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+    }
+
+  # module.networking_mumbai.aws_route_table.private[0] will be created
+  + resource "aws_route_table" "private" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = [
+          + {
+              + cidr_block                 = "0.0.0.0/0"
+              + nat_gateway_id             = (known after apply)
+                # (11 unchanged attributes hidden)
+            },
+        ]
+      + tags             = {
+          + "Name" = "dev-private-rt-1-mumbai"
+        }
+      + tags_all         = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-private-rt-1-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_route_table.public will be created
+  + resource "aws_route_table" "public" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = [
+          + {
+              + cidr_block                 = "0.0.0.0/0"
+              + gateway_id                 = (known after apply)
+                # (11 unchanged attributes hidden)
+            },
+        ]
+      + tags             = {
+          + "Name" = "dev-public-rt-mumbai"
+        }
+      + tags_all         = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-public-rt-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_route_table_association.private[0] will be created
+  + resource "aws_route_table_association" "private" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_route_table_association.private[1] will be created
+  + resource "aws_route_table_association" "private" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_route_table_association.private[2] will be created
+  + resource "aws_route_table_association" "private" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_route_table_association.public[0] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_route_table_association.public[1] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_route_table_association.public[2] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_subnet.private[0] will be created
+  + resource "aws_subnet" "private" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-south-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.10.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = false
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "AZ"   = "ap-south-1a"
+          + "Name" = "dev-private-subnet-1-mumbai"
+          + "Type" = "private"
+        }
+      + tags_all                                       = {
+          + "AZ"          = "ap-south-1a"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-private-subnet-1-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+          + "Type"        = "private"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_subnet.private[1] will be created
+  + resource "aws_subnet" "private" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-south-1b"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.11.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = false
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "AZ"   = "ap-south-1b"
+          + "Name" = "dev-private-subnet-2-mumbai"
+          + "Type" = "private"
+        }
+      + tags_all                                       = {
+          + "AZ"          = "ap-south-1b"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-private-subnet-2-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+          + "Type"        = "private"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_subnet.private[2] will be created
+  + resource "aws_subnet" "private" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-south-1c"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.12.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = false
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "AZ"   = "ap-south-1c"
+          + "Name" = "dev-private-subnet-3-mumbai"
+          + "Type" = "private"
+        }
+      + tags_all                                       = {
+          + "AZ"          = "ap-south-1c"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-private-subnet-3-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+          + "Type"        = "private"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_subnet.public[0] will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-south-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.1.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "AZ"   = "ap-south-1a"
+          + "Name" = "dev-public-subnet-1-mumbai"
+          + "Type" = "public"
+        }
+      + tags_all                                       = {
+          + "AZ"          = "ap-south-1a"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-public-subnet-1-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+          + "Type"        = "public"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_subnet.public[1] will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-south-1b"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.2.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "AZ"   = "ap-south-1b"
+          + "Name" = "dev-public-subnet-2-mumbai"
+          + "Type" = "public"
+        }
+      + tags_all                                       = {
+          + "AZ"          = "ap-south-1b"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-public-subnet-2-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+          + "Type"        = "public"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_subnet.public[2] will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-south-1c"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.0.3.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "AZ"   = "ap-south-1c"
+          + "Name" = "dev-public-subnet-3-mumbai"
+          + "Type" = "public"
+        }
+      + tags_all                                       = {
+          + "AZ"          = "ap-south-1c"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-public-subnet-3-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+          + "Type"        = "public"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.networking_mumbai.aws_vpc.this will be created
+  + resource "aws_vpc" "this" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "10.0.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = true
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + tags                                 = {
+          + "Component"   = "networking"
+          + "Environment" = "dev"
+          + "Name"        = "dev-vpc-mumbai"
+          + "Region"      = "ap-south-1"
+        }
+      + tags_all                             = {
+          + "Component"   = "networking"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-vpc-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "ap-south-1"
+        }
+    }
+
+  # module.networking_singapore.aws_eip.nat[0] will be created
+  + resource "aws_eip" "nat" {
+      + allocation_id        = (known after apply)
+      + arn                  = (known after apply)
+      + association_id       = (known after apply)
+      + carrier_ip           = (known after apply)
+      + customer_owned_ip    = (known after apply)
+      + domain               = "vpc"
+      + id                   = (known after apply)
+      + instance             = (known after apply)
+      + ipam_pool_id         = (known after apply)
+      + network_border_group = (known after apply)
+      + network_interface    = (known after apply)
+      + private_dns          = (known after apply)
+      + private_ip           = (known after apply)
+      + ptr_record           = (known after apply)
+      + public_dns           = (known after apply)
+      + public_ip            = (known after apply)
+      + public_ipv4_pool     = (known after apply)
+      + tags                 = {
+          + "Name" = "dev-nat-eip-1-singapore"
+        }
+      + tags_all             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-nat-eip-1-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+      + vpc                  = (known after apply)
+    }
+
+  # module.networking_singapore.aws_internet_gateway.this will be created
+  + resource "aws_internet_gateway" "this" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + tags     = {
+          + "Name" = "dev-igw-singapore"
+        }
+      + tags_all = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-igw-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # module.networking_singapore.aws_nat_gateway.this[0] will be created
+  + resource "aws_nat_gateway" "this" {
+      + allocation_id                      = (known after apply)
+      + association_id                     = (known after apply)
+      + connectivity_type                  = "public"
+      + id                                 = (known after apply)
+      + network_interface_id               = (known after apply)
+      + private_ip                         = (known after apply)
+      + public_ip                          = (known after apply)
+      + secondary_private_ip_address_count = (known after apply)
+      + secondary_private_ip_addresses     = (known after apply)
+      + subnet_id                          = (known after apply)
+      + tags                               = {
+          + "Name" = "dev-nat-gw-1-singapore"
+        }
+      + tags_all                           = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-nat-gw-1-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+    }
+
+  # module.networking_singapore.aws_route_table.private[0] will be created
+  + resource "aws_route_table" "private" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = [
+          + {
+              + cidr_block                 = "0.0.0.0/0"
+              + nat_gateway_id             = (known after apply)
+                # (11 unchanged attributes hidden)
+            },
+        ]
+      + tags             = {
+          + "Name" = "dev-private-rt-1-singapore"
+        }
+      + tags_all         = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-private-rt-1-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # module.networking_singapore.aws_route_table.public will be created
+  + resource "aws_route_table" "public" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = [
+          + {
+              + cidr_block                 = "0.0.0.0/0"
+              + gateway_id                 = (known after apply)
+                # (11 unchanged attributes hidden)
+            },
+        ]
+      + tags             = {
+          + "Name" = "dev-public-rt-singapore"
+        }
+      + tags_all         = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-public-rt-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # module.networking_singapore.aws_route_table_association.private[0] will be created
+  + resource "aws_route_table_association" "private" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.networking_singapore.aws_route_table_association.private[1] will be created
+  + resource "aws_route_table_association" "private" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.networking_singapore.aws_route_table_association.public[0] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.networking_singapore.aws_route_table_association.public[1] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.networking_singapore.aws_subnet.private[0] will be created
+  + resource "aws_subnet" "private" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-southeast-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.1.10.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = false
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "AZ"   = "ap-southeast-1a"
+          + "Name" = "dev-private-subnet-1-singapore"
+          + "Type" = "private"
+        }
+      + tags_all                                       = {
+          + "AZ"          = "ap-southeast-1a"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-private-subnet-1-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+          + "Type"        = "private"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.networking_singapore.aws_subnet.private[1] will be created
+  + resource "aws_subnet" "private" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-southeast-1b"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.1.11.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = false
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "AZ"   = "ap-southeast-1b"
+          + "Name" = "dev-private-subnet-2-singapore"
+          + "Type" = "private"
+        }
+      + tags_all                                       = {
+          + "AZ"          = "ap-southeast-1b"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-private-subnet-2-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+          + "Type"        = "private"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.networking_singapore.aws_subnet.public[0] will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-southeast-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.1.1.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "AZ"   = "ap-southeast-1a"
+          + "Name" = "dev-public-subnet-1-singapore"
+          + "Type" = "public"
+        }
+      + tags_all                                       = {
+          + "AZ"          = "ap-southeast-1a"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-public-subnet-1-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+          + "Type"        = "public"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.networking_singapore.aws_subnet.public[1] will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-southeast-1b"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.1.2.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "AZ"   = "ap-southeast-1b"
+          + "Name" = "dev-public-subnet-2-singapore"
+          + "Type" = "public"
+        }
+      + tags_all                                       = {
+          + "AZ"          = "ap-southeast-1b"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-public-subnet-2-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+          + "Type"        = "public"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.networking_singapore.aws_vpc.this will be created
+  + resource "aws_vpc" "this" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "10.1.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = true
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + tags                                 = {
+          + "Component"   = "networking"
+          + "Environment" = "dev"
+          + "Name"        = "dev-vpc-singapore"
+          + "Region"      = "ap-southeast-1"
+        }
+      + tags_all                             = {
+          + "Component"   = "networking"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-vpc-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "ap-southeast-1"
+        }
+    }
+
+  # module.networking_tokyo.aws_eip.nat[0] will be created
+  + resource "aws_eip" "nat" {
+      + allocation_id        = (known after apply)
+      + arn                  = (known after apply)
+      + association_id       = (known after apply)
+      + carrier_ip           = (known after apply)
+      + customer_owned_ip    = (known after apply)
+      + domain               = "vpc"
+      + id                   = (known after apply)
+      + instance             = (known after apply)
+      + ipam_pool_id         = (known after apply)
+      + network_border_group = (known after apply)
+      + network_interface    = (known after apply)
+      + private_dns          = (known after apply)
+      + private_ip           = (known after apply)
+      + ptr_record           = (known after apply)
+      + public_dns           = (known after apply)
+      + public_ip            = (known after apply)
+      + public_ipv4_pool     = (known after apply)
+      + tags                 = {
+          + "Name" = "dev-nat-eip-1-tokyo"
+        }
+      + tags_all             = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-nat-eip-1-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+      + vpc                  = (known after apply)
+    }
+
+  # module.networking_tokyo.aws_internet_gateway.this will be created
+  + resource "aws_internet_gateway" "this" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + tags     = {
+          + "Name" = "dev-igw-tokyo"
+        }
+      + tags_all = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-igw-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # module.networking_tokyo.aws_nat_gateway.this[0] will be created
+  + resource "aws_nat_gateway" "this" {
+      + allocation_id                      = (known after apply)
+      + association_id                     = (known after apply)
+      + connectivity_type                  = "public"
+      + id                                 = (known after apply)
+      + network_interface_id               = (known after apply)
+      + private_ip                         = (known after apply)
+      + public_ip                          = (known after apply)
+      + secondary_private_ip_address_count = (known after apply)
+      + secondary_private_ip_addresses     = (known after apply)
+      + subnet_id                          = (known after apply)
+      + tags                               = {
+          + "Name" = "dev-nat-gw-1-tokyo"
+        }
+      + tags_all                           = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-nat-gw-1-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+    }
+
+  # module.networking_tokyo.aws_route_table.private[0] will be created
+  + resource "aws_route_table" "private" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = [
+          + {
+              + cidr_block                 = "0.0.0.0/0"
+              + nat_gateway_id             = (known after apply)
+                # (11 unchanged attributes hidden)
+            },
+        ]
+      + tags             = {
+          + "Name" = "dev-private-rt-1-tokyo"
+        }
+      + tags_all         = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-private-rt-1-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # module.networking_tokyo.aws_route_table.public will be created
+  + resource "aws_route_table" "public" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + route            = [
+          + {
+              + cidr_block                 = "0.0.0.0/0"
+              + gateway_id                 = (known after apply)
+                # (11 unchanged attributes hidden)
+            },
+        ]
+      + tags             = {
+          + "Name" = "dev-public-rt-tokyo"
+        }
+      + tags_all         = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-public-rt-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # module.networking_tokyo.aws_route_table_association.private[0] will be created
+  + resource "aws_route_table_association" "private" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.networking_tokyo.aws_route_table_association.public[0] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.networking_tokyo.aws_subnet.private[0] will be created
+  + resource "aws_subnet" "private" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-northeast-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.2.10.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = false
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "AZ"   = "ap-northeast-1a"
+          + "Name" = "dev-private-subnet-1-tokyo"
+          + "Type" = "private"
+        }
+      + tags_all                                       = {
+          + "AZ"          = "ap-northeast-1a"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-private-subnet-1-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+          + "Type"        = "private"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.networking_tokyo.aws_subnet.public[0] will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = "ap-northeast-1a"
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.2.1.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + tags                                           = {
+          + "AZ"   = "ap-northeast-1a"
+          + "Name" = "dev-public-subnet-1-tokyo"
+          + "Type" = "public"
+        }
+      + tags_all                                       = {
+          + "AZ"          = "ap-northeast-1a"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-public-subnet-1-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Tokyo"
+          + "Type"        = "public"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.networking_tokyo.aws_vpc.this will be created
+  + resource "aws_vpc" "this" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "10.2.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = true
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + tags                                 = {
+          + "Component"   = "networking"
+          + "Environment" = "dev"
+          + "Name"        = "dev-vpc-tokyo"
+          + "Region"      = "ap-northeast-1"
+        }
+      + tags_all                             = {
+          + "Component"   = "networking"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-vpc-tokyo"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "ap-northeast-1"
+        }
+    }
+
+  # module.storage.aws_iam_policy.replication will be created
+  + resource "aws_iam_policy" "replication" {
+      + arn              = (known after apply)
+      + attachment_count = (known after apply)
+      + id               = (known after apply)
+      + name             = "dev-s3-replication-policy-mumbai"
+      + name_prefix      = (known after apply)
+      + path             = "/"
+      + policy           = (known after apply)
+      + policy_id        = (known after apply)
+      + tags_all         = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+    }
+
+  # module.storage.aws_iam_role.replication will be created
+  + resource "aws_iam_role" "replication" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "s3.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "dev-s3-replication-role-mumbai"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags                  = {
+          + "Name" = "dev-s3-replication-role"
+        }
+      + tags_all              = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-s3-replication-role"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # module.storage.aws_iam_role_policy_attachment.replication will be created
+  + resource "aws_iam_role_policy_attachment" "replication" {
+      + id         = (known after apply)
+      + policy_arn = (known after apply)
+      + role       = "dev-s3-replication-role-mumbai"
+    }
+
+  # module.storage.aws_s3_bucket.primary will be created
+  + resource "aws_s3_bucket" "primary" {
+      + acceleration_status         = (known after apply)
+      + acl                         = (known after apply)
+      + arn                         = (known after apply)
+      + bucket                      = "dev-mumbai-data-604604739963"
+      + bucket_domain_name          = (known after apply)
+      + bucket_prefix               = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + object_lock_enabled         = (known after apply)
+      + policy                      = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags                        = {
+          + "Component"   = "storage"
+          + "Environment" = "dev"
+          + "Name"        = "dev-primary-bucket-mumbai"
+          + "Region"      = "Mumbai"
+          + "Replication" = "enabled"
+        }
+      + tags_all                    = {
+          + "Component"   = "storage"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-primary-bucket-mumbai"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Mumbai"
+          + "Replication" = "enabled"
+        }
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + cors_rule (known after apply)
+
+      + grant (known after apply)
+
+      + lifecycle_rule (known after apply)
+
+      + logging (known after apply)
+
+      + object_lock_configuration (known after apply)
+
+      + replication_configuration (known after apply)
+
+      + server_side_encryption_configuration (known after apply)
+
+      + versioning (known after apply)
+
+      + website (known after apply)
+    }
+
+  # module.storage.aws_s3_bucket.replica will be created
+  + resource "aws_s3_bucket" "replica" {
+      + acceleration_status         = (known after apply)
+      + acl                         = (known after apply)
+      + arn                         = (known after apply)
+      + bucket                      = "dev-replica-bucket-singapore-604604739963"
+      + bucket_domain_name          = (known after apply)
+      + bucket_prefix               = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + object_lock_enabled         = (known after apply)
+      + policy                      = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags                        = {
+          + "Component"   = "storage"
+          + "Environment" = "dev"
+          + "Name"        = "dev-replica-bucket-singapore"
+          + "Region"      = "Singapore"
+          + "ReplicaOf"   = "Mumbai"
+        }
+      + tags_all                    = {
+          + "Component"   = "storage"
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Name"        = "dev-replica-bucket-singapore"
+          + "Project"     = "MultiRegionInfra"
+          + "Region"      = "Singapore"
+          + "ReplicaOf"   = "Mumbai"
+        }
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+
+      + cors_rule (known after apply)
+
+      + grant (known after apply)
+
+      + lifecycle_rule (known after apply)
+
+      + logging (known after apply)
+
+      + object_lock_configuration (known after apply)
+
+      + replication_configuration (known after apply)
+
+      + server_side_encryption_configuration (known after apply)
+
+      + versioning (known after apply)
+
+      + website (known after apply)
+    }
+
+  # module.storage.aws_s3_bucket_lifecycle_configuration.primary will be created
+  + resource "aws_s3_bucket_lifecycle_configuration" "primary" {
+      + bucket                                 = (known after apply)
+      + expected_bucket_owner                  = (known after apply)
+      + id                                     = (known after apply)
+      + transition_default_minimum_object_size = "all_storage_classes_128K"
+
+      + rule {
+          + id     = "archive-old-files"
+          + status = "Disabled"
+            # (1 unchanged attribute hidden)
+
+          + expiration {
+              + days                         = 365
+              + expired_object_delete_marker = false
+            }
+
+          + filter {
+                # (1 unchanged attribute hidden)
+            }
+
+          + transition {
+              + days          = 30
+              + storage_class = "STANDARD_IA"
+            }
+          + transition {
+              + days          = 90
+              + storage_class = "GLACIER"
+            }
+        }
+      + rule {
+          + id     = "delete-old-versions"
+          + status = "Disabled"
+            # (1 unchanged attribute hidden)
+
+          + filter {
+                # (1 unchanged attribute hidden)
+            }
+
+          + noncurrent_version_expiration {
+              + noncurrent_days = 30
+            }
+        }
+    }
+
+  # module.storage.aws_s3_bucket_public_access_block.primary will be created
+  + resource "aws_s3_bucket_public_access_block" "primary" {
+      + block_public_acls       = true
+      + block_public_policy     = true
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = true
+      + restrict_public_buckets = true
+    }
+
+  # module.storage.aws_s3_bucket_replication_configuration.this will be created
+  + resource "aws_s3_bucket_replication_configuration" "this" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+      + role   = (known after apply)
+
+      + rule {
+          + id       = "replication-to-singapore"
+          + priority = 1
+          + status   = "Enabled"
+
+          + delete_marker_replication {
+              + status = "Enabled"
+            }
+
+          + destination {
+              + bucket        = (known after apply)
+              + storage_class = "STANDARD"
+
+              + metrics {
+                  + status = "Disabled"
+
+                  + event_threshold {
+                      + minutes = 15
+                    }
+                }
+
+              + replication_time {
+                  + status = "Disabled"
+
+                  + time {
+                      + minutes = 15
+                    }
+                }
+            }
+
+          + filter {
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # module.storage.aws_s3_bucket_server_side_encryption_configuration.primary will be created
+  + resource "aws_s3_bucket_server_side_encryption_configuration" "primary" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+
+      + rule {
+          + apply_server_side_encryption_by_default {
+              + sse_algorithm     = "AES256"
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # module.storage.aws_s3_bucket_server_side_encryption_configuration.replica will be created
+  + resource "aws_s3_bucket_server_side_encryption_configuration" "replica" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+
+      + rule {
+          + apply_server_side_encryption_by_default {
+              + sse_algorithm     = "AES256"
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # module.storage.aws_s3_bucket_versioning.primary will be created
+  + resource "aws_s3_bucket_versioning" "primary" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+
+      + versioning_configuration {
+          + mfa_delete = (known after apply)
+          + status     = "Enabled"
+        }
+    }
+
+  # module.storage.aws_s3_bucket_versioning.replica will be created
+  + resource "aws_s3_bucket_versioning" "replica" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+
+      + versioning_configuration {
+          + mfa_delete = (known after apply)
+          + status     = "Enabled"
+        }
+    }
+
+Plan: 96 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + dynamodb_table_name   = "dev-global-app-data"
+  + ec2_public_ips        = {
+      + mumbai    = [
+          + (known after apply),
+        ]
+      + singapore = [
+          + (known after apply),
+        ]
+      + tokyo     = [
+          + (known after apply),
+        ]
+    }
+  + eks_cluster_endpoints = {
+      + mumbai    = (known after apply)
+      + singapore = (known after apply)
+      + tokyo     = (known after apply)
+    }
+  + s3_primary_bucket     = (known after apply)
+  + vpc_ids               = {
+      + mumbai    = (known after apply)
+      + singapore = (known after apply)
+      + tokyo     = (known after apply)
+    }
